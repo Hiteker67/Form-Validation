@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Registration Form</title>
+    <link rel="stylesheet" href="/form.css">
+    <script>
+      function validateForm() {
+        // Get the values of the form fields
+        var name = document.forms["registrationForm"]["name"].value;
+        var email = document.forms["registrationForm"]["email"].value;
+        var password = document.forms["registrationForm"]["password"].value;
+        var confirmPassword = document.forms["registrationForm"]["confirmPassword"].value;
+        var gender = document.forms["registrationForm"]["gender"].value;
+        var age = document.forms["registrationForm"]["age"].value;
+
+        // Check if name field is empty
+        if (name == "") {
+          alert("Name must be filled out");
+          return false;
+        }
+
+        // Check if email field is empty
+        if (email == "") {
+          alert("Email must be filled out");
+          return false;
+        }
+
+        // Check if email is valid
+        var emailRegex = /\S+@\S+\.\S+/;
+        if (!emailRegex.test(email)) {
+          alert("Invalid email address");
+          return false;
+        }
+
+        // Check if password field is empty
+        if (password == "") {
+          alert("Password must be filled out");
+          return false;
+        }
+
+        // Check if password is at least 8 characters long
+        if (password.length < 8) {
+          alert("Password must be at least 8 characters long");
+          return false;
+        }
+
+        // Check if confirm password field is empty
+        if (confirmPassword == "") {
+          alert("Confirm password must be filled out");
+          return false;
+        }
+
+        // Check if confirm password matches password
+        if (confirmPassword != password) {
+          alert("Passwords do not match");
+          return false;
+        }
+
+        // Check if gender field is empty
+        if (gender == "") {
+          alert("Gender must be selected");
+          return false;
+        }
+
+        // Check if age field is empty
+        if (age == "") {
+          alert("Age must be filled out");
+          return false;
+        }
+
+        // If all checks pass, return true to submit form
+        return true;
+      }
+    </script>
+  </head>
+  <body background="image.jpg" style="background-repeat: no-repeat; background-size: 100%;">
+    <h1>User Registration Form</h1>  
+    <form name="registrationForm" onsubmit="return validateForm()">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"><br><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+
+      <label for="gender">Gender:</label>
+      <input type="radio" id="male" name="gender" value="male">
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="female">Female</label><br><br>
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age"><br><br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
